@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./stylee.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <label for="country">Country</label>
+            <select name="country" id="country">
+                <option value="1">India</option>
+                <option value="2">USA</option>
+                <option value="3">UK</option>
+            </select>
+            <label for="state">State</label>
+            <select name="state1" id="state1">
+                <option value="maharashtra">Maharashtra</option>
+                <option value="gujarat">Gujarat</option>
+                <option value="karnataka">Karnataka</option>
+                <option value="kerala">Kerala</option>
+            </select>
+            <select name="state2" id="state2">
+                <option value="california">California</option>
+                <option value="new york">New York</option>
+                <option value="texas">Texas</option>
+            </select>
+
+            <label for="District">District</label>
+            <select name="district_maharashtra" id="district_maharashtra">
+                <option value="pune">Pune</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="nagpur">Nagpur</option>
+                <option value="borivali">Borivali</option>
+            </select>
+            <select value="district_kerala" id="district_kerala" >
+                <option value="kochi">Kochi</option>
+                <option value="thiruvananthapuram">Thiruvananthapuram</option>
+                <option value="kottayam">Kottayam</option>
+                <option value="thrissur">Thrissur</option>
+            </select>
+
+            </select>
+        </div>
+    </div>
+    <script>
+        const country = document.getElementById("country");
+        const state1 = document.getElementById("state1");
+        const state2 = document.getElementById("state2");
+        const district1=document.getElementById("district_maharashtra");
+        const district2=document.getElementById("district_kerala");
+        country.onchange = function () {
+            if (this.value == 1) {
+                state2.style.display = 'none';
+                state1.style.display = 'block';
+                hide()
+
+            }
+            else if (this.value == 2) {
+                state1.style.display = 'none';
+                state2.style.display = 'block';
+                district1.style.display="none";
+                district2.style.display="none";
+            }
+            else {
+                state1.style.display = 'none';
+                state2.style.display = 'none';
+                
+            }
+        }
+
+        state1.onchange=function(){
+            update(this.value)
+        }
+        state2.onchange=function(){
+            hide();
+        }
+
+        function update(state){
+            if(state=="maharashtra"){
+                district1.style.display="block";
+                district2.style.display="none";
+            }
+            else if(state=="kerala"){
+                district1.style.display="none";
+                district2.style.display="block";
+            }
+            else if(state=="karnataka"){
+                district1.style.display="none";
+                district2.style.display="none";
+            }
+            else if(state=="gujarat"){
+                district1.style.display="none";
+                district2.style.display="none";
+            }
+            else{
+                district1.style.display="none";
+                district2.style.display="none";
+            }
+        }
+
+        function hide(){
+            district1.style.display="none";
+            district2.style.display="none";
+        }
+
+        country.onchange();
+        hide();
+        state1.onchange();
+        state2.onchange();
+    </script>
+</body>
+
+</html>
